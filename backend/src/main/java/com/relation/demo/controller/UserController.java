@@ -22,7 +22,7 @@ public class UserController {
     private UserService userService;
 
     // create user
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<String> createUser(@RequestBody User user) {
         try {
             userService.createUser(user);
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     // edit user
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> updateUser(@PathVariable int id, @RequestBody User updatedUser) {
         try {
             User user = userService.editUserById(id, updatedUser);
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     // delete user by id
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable int id) {
         try {
             String result = userService.deleteUserById(id);

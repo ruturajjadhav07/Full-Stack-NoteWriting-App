@@ -37,7 +37,7 @@ public class NotesController {
         }
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/notes/{userId}")
     public ResponseEntity<?> getNotesByUser(@PathVariable int userId) {
         try {
             List<NotesDto> notesList = notesService.getNotesByUserId(userId);
@@ -50,7 +50,7 @@ public class NotesController {
         }
     }
 
-    @PutMapping("/{userId}/{noteId}/edit")
+    @PutMapping("/edit/{userId}/{noteId}/edit")
     public ResponseEntity<?> editByUserId(@PathVariable int userId, @PathVariable int noteId, @RequestBody Notes note) {
         try {
             notesService.editByUserId(userId, noteId, note);
@@ -63,7 +63,7 @@ public class NotesController {
         }
     }
 
-    @DeleteMapping("/{userId}/note/{noteId}")
+    @DeleteMapping("/delete/{userId}/note/{noteId}")
     public ResponseEntity<String> deleteNote(@PathVariable int userId, @PathVariable int noteId) {
         try {
             notesService.deleteByUserId(userId, noteId);
